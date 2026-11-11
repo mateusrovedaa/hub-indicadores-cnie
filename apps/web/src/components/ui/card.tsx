@@ -4,13 +4,13 @@ import { cn } from "@/lib/utils";
 
 /**
  * Figma: card (191:6752) + card-area (area: header | content | footer).
- * Elevação padrão: Camada 1.
+ * Elevação padrão: Camada 1. Raio de 4px e rodapé sem borda, como o card do Aurora.
  */
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card"
-      className={cn("flex flex-col rounded-md bg-card text-card-foreground shadow-sm", className)}
+      className={cn("flex flex-col rounded-(--card-radius) bg-card text-card-foreground shadow-sm", className)}
       {...props}
     />
   );
@@ -36,7 +36,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-footer"
-      className={cn("flex items-center gap-2 border-t px-4 py-3", className)}
+      className={cn("flex items-center gap-2 px-4 pb-4", className)}
       {...props}
     />
   );

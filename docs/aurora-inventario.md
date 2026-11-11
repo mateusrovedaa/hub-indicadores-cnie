@@ -21,7 +21,7 @@ O Aurora é um sistema do **Ministério da Saúde / CNIE** para **monitoramento 
 | Comportamento e acessibilidade | Radix UI | ✅ | Reutilizar (vem junto com o shadcn) |
 | Ícones | Lucide | ✅ | Reutilizar |
 | Gráficos | ECharts | ✅ | **Reutilizar** |
-| Mapas | Leaflet | ✅ | Reutilizar, se o hub tiver mapas |
+| Mapas | MapLibre GL (`maplibre-gl`) | ✅ | Reutilizar, se o hub tiver mapas |
 | Tipografia | Rawline, via CDN do DS GovBR | ✅ | Reutilizar |
 | Backend / API | Não descrito | ✏️ | Hub usará FastAPI + FastCRUD |
 | Autenticação | Não descrito (há "ações de usuário" no header) | 🔍 |
@@ -40,7 +40,7 @@ O Aurora organiza o visual em camadas bem separadas. Essa separação é o princ
 ├─────────────────────────────────────────────────────────────┤
 │ 4. Primitivos shadcn        src/components/ui               │  Button, Card, Dialog, Tabs...
 ├─────────────────────────────────────────────────────────────┤
-│ 3. Ajustes globais          src/app/components.css          │  h1–h6, botões, cards, Leaflet
+│ 3. Ajustes globais          src/app/components.css          │  h1–h6, botões, cards, mapa   
 ├─────────────────────────────────────────────────────────────┤
 │ 2. Integração               src/app/index.css               │  Rawline + Tailwind + shadcn + tema
 ├─────────────────────────────────────────────────────────────┤
@@ -70,7 +70,7 @@ className="bg-primary text-primary-foreground"
 className="text-[var(--aurora-blue-70)]"
 ```
 
-✏️ **Pendência:** obter o `tokens.css` completo para comparar com o `figma-extracao.md`.
+Comparação feita sobre o commit `5ccf8ab`: o hub adotou a camada semântica do Aurora. Detalhes e exceções em `design-system-mapeamento.md`, seção 2.2.
 
 ### 3.2 Integração (`src/app/index.css`) ✅
 
@@ -96,7 +96,7 @@ Em vez de reescrever cada componente shadcn, o Aurora aplica regras globais sobr
 - altura, raio e estados (hover, active, focus) dos botões;
 - padding e sombra dos cards;
 - superfícies Aurora;
-- ajustes do Leaflet.
+- ajustes do mapa (MapLibre).
 
 **Vantagem:** os primitivos continuam com a API original do shadcn, o que facilita atualizar e copiar componentes.
 **Cuidado:** estilos globais por atributo podem gerar efeitos colaterais difíceis de rastrear. Vale documentar cada regra no próprio CSS.
@@ -107,9 +107,7 @@ Em vez de reescrever cada componente shadcn, o Aurora aplica regras globais sobr
 
 ### 4.1 Primitivos (`src/components/ui`) ✅
 
-`Button`, `Card`, `Dialog`, `Tabs`, `Table`, `Input`, `Select`, `Popover`, `Tooltip` (lista parcial citada na documentação).
-
-🔍 A confirmar no código: quais outros primitivos existem (ex.: `Badge`, `Sheet`, `Skeleton`, `DropdownMenu`, `Calendar`, `Command`).
+Lista conferida no código (commit `5ccf8ab`): `Badge`, `Button`, `Card`, `Checkbox`, `Dialog`, `DropdownMenu`, `Input`, `Popover`, `Select`, `Separator`, `Skeleton`, `Table`, `Tabs`, `Tooltip`.
 
 ### 4.2 Layout institucional (`src/components/layout`) ✅
 
@@ -124,7 +122,7 @@ Em vez de reescrever cada componente shadcn, o Aurora aplica regras globais sobr
 |---|---|---|---|
 | `FilterBar` | Filtros globais do painel (período, território, agravo) 🔍 | shadcn | **Adaptar** — base para os filtros do hub |
 | `KpiRow` | Linha de cards com indicadores-chave | shadcn + tokens | **Reutilizar / generalizar** |
-| `RiskMap` | Mapa de risco por território | Leaflet | Adaptar para mapas de indicadores |
+| `RiskMap` | Mapa de risco por território | MapLibre GL | Adaptar para mapas de indicadores |
 | `TimeSeriesChart` | Série temporal | ECharts | **Reutilizar / generalizar** |
 | `HeatmapAge` | Mapa de calor por faixa etária | ECharts | Avaliar |
 | `PyramidChart` | Pirâmide etária (sexo × idade) | ECharts | Avaliar |
@@ -227,10 +225,10 @@ Quando o `figma-extracao.md` estiver pronto, comparar com o `tokens.css`. Diverg
 ## 10. Pendências
 
 - [ ] Prints das telas do Aurora (seção 6)
-- [ ] Arquivo `tokens.css` completo
-- [ ] Lista completa de primitivos em `src/components/ui`
+- [x] Arquivo `tokens.css` completo
+- [x] Lista completa de primitivos em `src/components/ui`
 - [ ] Conteúdo de `components/management` e `components/auth`
 - [ ] Como o Aurora consome dados (`src/lib`): REST? Qual backend?
 - [ ] Como funciona a autenticação
-- [ ] Comparar tokens do Aurora com `figma-extracao.md`
+- [x] Comparar tokens do Aurora com os do hub (ver `design-system-mapeamento.md`)
 - [ ] Levar decisões D1 a D5 para a equipe

@@ -4,83 +4,84 @@
  * Camada 1: palette.css  -> paleta crua gerada do Figma (--ds-*)
  * Camada 2: este arquivo -> tokens SEMÂNTICOS e escalas
  *
- * O arquivo do Figma não tem camada semântica (ver docs/figma-extracao.md §4.1).
- * Os mapeamentos abaixo foram deduzidos do uso nos componentes do Figma e do
- * GOV.BR DS. Justificativas em docs/design-system-mapeamento.md.
+ * A camada semântica segue a do Aurora (apps/painel/src/app/tokens.css do
+ * repositório aurora_cnie, commit 5ccf8ab): mesmos nomes e mesmos valores,
+ * apontando para a paleta --ds-* no lugar de --aurora-*. Equivalência e
+ * exceções em docs/design-system-mapeamento.md.
  */
 
 :root {
   /* ---------- Cores de base ---------- */
   --background: var(--ds-pure-0);
-  --foreground: var(--ds-gray-80);            /* texto padrão do kit */
-  --surface: var(--ds-gray-02);                /* fundo de seções/página */
+  --foreground: var(--ds-gray-90);
 
   --card: var(--ds-pure-0);
-  --card-foreground: var(--ds-gray-80);
+  --card-foreground: var(--foreground);
   --popover: var(--ds-pure-0);
-  --popover-foreground: var(--ds-gray-80);
+  --popover-foreground: var(--foreground);
 
-  /* ---------- Interativo (button emphasis=primary/secundary/tertiary) ---------- */
+  --surface: var(--ds-pure-0);
+  --surface-foreground: var(--foreground);
+  --surface-subtle: var(--ds-gray-02);
+  --surface-muted: var(--ds-gray-05);
+  --surface-inverse: var(--ds-blue-warm-vivid-90);   /* rodapé (footer type=dark) */
+  --surface-inverse-foreground: var(--ds-pure-0);
+
+  /* ---------- Interativo ---------- */
   --primary: var(--ds-blue-warm-vivid-70);    /* #1351B4 */
   --primary-foreground: var(--ds-pure-0);
+  --secondary: var(--ds-gray-05);
+  --secondary-foreground: var(--ds-gray-90);
+  --accent: var(--ds-blue-warm-vivid-05);
+  --accent-foreground: var(--ds-blue-warm-vivid-80);
+  --muted: var(--ds-gray-02);
+  --muted-foreground: var(--ds-gray-60);      /* #636363, contraste 5,9:1 sobre branco */
+
+  /* Extensões do hub (sem equivalente nomeado no Aurora, que resolve os
+   * estados por regra global em components.css). Os valores são os mesmos:
+   * cor interativa a 16% (hover) e 45% (pressed). */
   --primary-hover: var(--ds-blue-warm-vivid-80);
   --primary-pressed: var(--ds-blue-warm-vivid-90);
-
-  --secondary: var(--ds-pure-0);              /* botão secundário: fundo branco, texto azul */
-  --secondary-foreground: var(--ds-blue-warm-vivid-70);
-
-  /* Sobreposições de estado vistas no Figma: #1351B4 a 16% (hover) e 45% (pressed) */
   --state-hover: rgb(19 81 180 / 0.16);
   --state-pressed: rgb(19 81 180 / 0.45);
   --disabled-opacity: 0.45;
 
-  --accent: var(--ds-blue-warm-vivid-10);
-  --accent-foreground: var(--ds-blue-warm-vivid-80);
-
-  --muted: var(--ds-gray-02);
-  --muted-foreground: var(--ds-gray-60);      /* #636363, contraste 5,9:1 sobre branco */
-
   /* ---------- Bordas e foco ---------- */
-  --border: var(--ds-gray-20);                /* divisórias e cards */
-  --input: var(--ds-gray-40);                 /* borda de campos */
+  --border: var(--ds-gray-20);
+  --input: var(--ds-gray-20);
   --ring: var(--ds-gold-vivid-40);            /* foco GovBR: tracejado dourado */
 
-  /* ---------- Feedback (message / message-feedback / tag status) ---------- */
+  /* ---------- Feedback ---------- */
   --success: var(--ds-green-cool-vivid-50);   /* #168821 */
-  --success-subtle: var(--ds-green-cool-vivid-05);
   --success-foreground: var(--ds-pure-0);
+  --success-muted: var(--ds-green-cool-vivid-05);
 
-  --destructive: var(--ds-red-vivid-50);      /* danger */
-  --destructive-subtle: var(--ds-red-vivid-10);
+  --destructive: var(--ds-red-vivid-50);
   --destructive-foreground: var(--ds-pure-0);
+  --destructive-muted: var(--ds-red-vivid-05);   /* extensão do hub; o Aurora usa red-5 direto */
 
   --warning: var(--ds-yellow-vivid-20);
-  --warning-subtle: var(--ds-yellow-vivid-05);
-  --warning-foreground: var(--ds-gray-80);    /* amarelo exige texto escuro */
+  --warning-foreground: var(--ds-gray-90);    /* amarelo exige texto escuro */
+  --warning-muted: var(--ds-yellow-vivid-05);
 
   --info: var(--ds-blue-warm-vivid-60);
-  --info-subtle: var(--ds-blue-warm-vivid-10);
   --info-foreground: var(--ds-pure-0);
+  --info-muted: var(--ds-blue-warm-vivid-10);
 
-  /* ---------- Rodapé (footer type=dark) ---------- */
-  --footer: var(--ds-blue-warm-vivid-90);
-  --footer-foreground: var(--ds-pure-0);
-
-  /* ---------- Gráficos ----------
-   * O Figma não define paleta de dados. Proposta com famílias bem distintas
-   * da paleta GovBR, primeira cor = primária. Validar com o time de design. */
+  /* ---------- Gráficos (paleta do Aurora) ---------- */
   --chart-1: var(--ds-blue-warm-vivid-70);
-  --chart-2: var(--ds-mint-cool-vivid-50);
-  --chart-3: var(--ds-orange-vivid-40);
-  --chart-4: var(--ds-violet-vivid-60);
-  --chart-5: var(--ds-gold-vivid-30);
-  --chart-6: var(--ds-red-cool-vivid-50);
+  --chart-2: var(--ds-green-cool-vivid-50);
+  --chart-3: var(--ds-yellow-vivid-50);
+  --chart-4: var(--ds-red-vivid-60);
+  --chart-5: var(--ds-gray-70);
+  /* Extensões do hub para eixos e grade do ECharts */
   --chart-grid: var(--ds-gray-10);
   --chart-axis: var(--ds-gray-60);
 
   /* ---------- Tipografia ----------
-   * Rawline, escala modular 1.2 com base 14px (font-size-scale-*). */
-  --font-family-base: "Rawline", "Raleway", system-ui, sans-serif;
+   * Rawline, escala modular 1.2 com base 14px (font-size-scale-*).
+   * Mesmos degraus do Aurora, em rem para respeitar o zoom de texto. */
+  --font-family-base: "Rawline", "Raleway", Arial, sans-serif;
 
   --font-size-scale-down-02: 0.6075rem;   /*  9.72px */
   --font-size-scale-down-01: 0.7294rem;   /* 11.67px */
@@ -93,20 +94,19 @@
   --font-size-scale-up-06: 2.6127rem;     /* 41.8px  */
   --font-size-scale-up-07: 3.1352rem;     /* 50.16px */
 
-  /* O Figma usa line-height "auto". Valores do GOV.BR DS: */
   --font-line-height-low: 1.15;
   --font-line-height-medium: 1.45;
   --font-line-height-high: 1.85;
 
-  /* ---------- Raios (sem tokens no Figma; valores mais frequentes) ---------- */
-  --radius-sm: 4px;     /* input, select, checkbox, textarea */
-  --radius-md: 8px;     /* card, header */
-  --radius-lg: 16px;
-  --radius-pill: 100em; /* button, tag */
+  /* ---------- Raios ----------
+   * --radius alimenta a escala do Tailwind em index.css (igual ao Aurora). */
+  --radius: 8px;
+  --radius-pill: 100em;   /* button, tag */
+  --card-radius: 4px;
 
-  /* ---------- Elevação (estilos ⛅ Elevação/Camada 1–4) ---------- */
-  --surface-shadow-1: 0 1px 6px rgb(51 51 51 / 0.16);
-  --surface-shadow-2: 0 3px 6px rgb(51 51 51 / 0.16);
-  --surface-shadow-3: 0 6px 6px rgb(51 51 51 / 0.16);
-  --surface-shadow-4: 0 9px 6px rgb(51 51 51 / 0.16);
+  /* ---------- Elevação (Camada 1–4, preto a 16% como no Aurora) ---------- */
+  --surface-shadow-sm: 0 1px 6px rgb(0 0 0 / 0.16);
+  --surface-shadow-md: 0 3px 6px rgb(0 0 0 / 0.16);
+  --surface-shadow-lg: 0 6px 6px rgb(0 0 0 / 0.16);
+  --surface-shadow-xl: 0 9px 6px rgb(0 0 0 / 0.16);   /* Camada 4: só no hub */
 }

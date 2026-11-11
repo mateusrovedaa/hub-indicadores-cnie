@@ -6,7 +6,7 @@ import { Check, ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-/** Figma: select (24:393). Mesma caixa do input (raio 4, borda gray-40). */
+/** Figma: select (24:393). Mesma caixa do input. */
 const Select = SelectPrimitive.Root;
 const SelectValue = SelectPrimitive.Value;
 const SelectGroup = SelectPrimitive.Group;

@@ -34,17 +34,19 @@ function Secao({ titulo, figma, children }: { titulo: string; figma: string; chi
 const CORES: [string, string, string][] = [
   ["primary", "--primary", "blue-warm-vivid-70"],
   ["primary-hover", "--primary-hover", "blue-warm-vivid-80"],
-  ["foreground", "--foreground", "gray-80"],
+  ["foreground", "--foreground", "gray-90"],
   ["muted-foreground", "--muted-foreground", "gray-60"],
-  ["surface", "--surface", "gray-02"],
+  ["surface-subtle", "--surface-subtle", "gray-02"],
+  ["secondary", "--secondary", "gray-05"],
+  ["accent", "--accent", "blue-warm-vivid-05"],
   ["border", "--border", "gray-20"],
-  ["input", "--input", "gray-40"],
+  ["input", "--input", "gray-20"],
   ["ring (foco)", "--ring", "gold-vivid-40"],
   ["success", "--success", "green-cool-vivid-50"],
   ["destructive", "--destructive", "red-vivid-50"],
   ["warning", "--warning", "yellow-vivid-20"],
   ["info", "--info", "blue-warm-vivid-60"],
-  ["footer", "--footer", "blue-warm-vivid-90"],
+  ["surface-inverse", "--surface-inverse", "blue-warm-vivid-90"],
 ];
 
 const TIPOGRAFIA: [string, string][] = [
@@ -52,8 +54,8 @@ const TIPOGRAFIA: [string, string][] = [
   ["h2", "Regular 34.84"],
   ["h3", "Medium 29.03"],
   ["h4", "SemiBold 24.19"],
-  ["h5", "Bold 20.16"],
-  ["h6", "ExtraBold 16.8"],
+  ["h5", "SemiBold 20.16"],
+  ["h6", "Bold 16.8"],
 ];
 
 export default function DesignSystemPage() {
@@ -61,14 +63,14 @@ export default function DesignSystemPage() {
     <>
       <PageHeader
         titulo="Design system"
-        descricao="Tokens e componentes do DS GovBR aplicados ao hub. Use esta página para conferir a implementação contra o Figma."
+        descricao="Tokens e componentes do DS GovBR aplicados ao hub, com a mesma camada semântica do Aurora. Use esta página para conferir a implementação contra o Figma."
       />
 
       <Secao titulo="Cores semânticas" figma="estilos de cor (463), camada semântica em tokens.css">
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6">
           {CORES.map(([nome, token, origem]) => (
             <li key={token} className="flex flex-col gap-2">
-              <span className="h-16 rounded-md border" style={{ background: `var(${token})` }} />
+              <span className="h-16 rounded-lg border" style={{ background: `var(${token})` }} />
               <span className="text-sm font-semibold">{nome}</span>
               <span className="text-xs text-muted-foreground">{origem}</span>
             </li>
@@ -76,9 +78,9 @@ export default function DesignSystemPage() {
         </ul>
       </Secao>
 
-      <Secao titulo="Paleta de gráficos" figma="não existe no Figma (proposta)">
+      <Secao titulo="Paleta de gráficos" figma="não existe no Figma; paleta do Aurora">
         <div className="flex flex-wrap gap-2">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
+          {[1, 2, 3, 4, 5].map((n) => (
             <span key={n} className="flex items-center gap-2 text-sm">
               <span className="size-6 rounded-sm" style={{ background: `var(--chart-${n})` }} />
               chart-{n}
@@ -101,7 +103,7 @@ export default function DesignSystemPage() {
             );
           })}
           <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
-            <span className="w-32 text-xs text-muted-foreground">paragraph, Regular 16.8</span>
+            <span className="w-32 text-xs text-muted-foreground">paragraph, Regular 14</span>
             <p className="max-w-2xl">
               Proporção de exames com resultado positivo entre os exames com resultado liberado na semana.
             </p>
@@ -182,7 +184,7 @@ export default function DesignSystemPage() {
       <Secao titulo="Elevação" figma="estilos ⛅ Elevação/Camada 1–4">
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
           {(["shadow-sm", "shadow-md", "shadow-lg", "shadow-xl"] as const).map((s, i) => (
-            <div key={s} className={`rounded-md bg-card p-6 text-sm ${s}`}>
+            <div key={s} className={`rounded-lg bg-card p-6 text-sm ${s}`}>
               Camada {i + 1}
               <span className="block text-xs text-muted-foreground">{s}</span>
             </div>

@@ -11,10 +11,10 @@ import { cn } from "@/lib/utils";
 const messageVariants = cva("flex gap-3 rounded-sm border-l-4 p-4 text-sm text-foreground", {
   variants: {
     state: {
-      success: "border-success bg-success-subtle",
-      danger: "border-destructive bg-destructive-subtle",
-      info: "border-info bg-info-subtle",
-      warning: "border-warning bg-warning-subtle",
+      success: "border-success bg-success-muted",
+      danger: "border-destructive bg-destructive-muted",
+      info: "border-info bg-info-muted",
+      warning: "border-warning bg-warning-muted",
     },
   },
   defaultVariants: { state: "info" },

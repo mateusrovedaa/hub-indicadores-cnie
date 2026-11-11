@@ -19,7 +19,7 @@ const buttonVariants = cva(
       variant: {
         primary: "bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-pressed",
         secondary:
-          "border border-primary bg-secondary text-secondary-foreground hover:bg-state-hover active:bg-state-pressed",
+          "border border-primary bg-background text-primary hover:bg-state-hover active:bg-state-pressed",
         tertiary: "bg-transparent text-primary hover:bg-state-hover active:bg-state-pressed",
       },
       size: {

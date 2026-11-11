@@ -199,7 +199,7 @@ Mapeamento entre o tipo de indicador e o componente do hub (com base nos compone
 |---|---|---|
 | Valor atual + variação | Card de KPI | `KpiRow` |
 | Evolução no tempo | Série temporal | `TimeSeriesChart` (ECharts) |
-| Comparação entre territórios | Mapa coroplético | `RiskMap` (Leaflet) |
+| Comparação entre territórios | Mapa coroplético | `RiskMap` (MapLibre GL) |
 | Sexo × faixa etária | Pirâmide | `PyramidChart` (ECharts) |
 | Faixa etária × tempo | Mapa de calor | `HeatmapAge` (ECharts) |
 | Várias dimensões de um território | Radar | `RadarChart` (ECharts) |

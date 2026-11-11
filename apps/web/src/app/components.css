@@ -18,7 +18,7 @@
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-family-base);
-    font-size: var(--font-size-scale-up-01);   /* paragraph: Regular 16.8 */
+    font-size: var(--font-size-scale-base);   /* 14px, como no Aurora */
     line-height: var(--font-line-height-medium);
     -webkit-font-smoothing: antialiased;
   }
@@ -32,8 +32,8 @@
   h2 { font-size: var(--font-size-scale-up-05); font-weight: 400; }
   h3 { font-size: var(--font-size-scale-up-04); font-weight: 500; }
   h4 { font-size: var(--font-size-scale-up-03); font-weight: 600; }
-  h5 { font-size: var(--font-size-scale-up-02); font-weight: 700; }
-  h6 { font-size: var(--font-size-scale-up-01); font-weight: 800; }
+  h5 { font-size: var(--font-size-scale-up-02); font-weight: 600; }
+  h6 { font-size: var(--font-size-scale-up-01); font-weight: 700; }
 
   /* Variantes 4col (mobile) */
   @media (width < 48rem) {
@@ -43,7 +43,10 @@
     h4 { font-size: var(--font-size-scale-up-01); font-weight: 700; }
     h5 { font-size: var(--font-size-scale-base); font-weight: 800; }
     h6 { font-size: var(--font-size-scale-down-01); font-weight: 800; }
-    body { font-size: var(--font-size-scale-base); }
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 24%, transparent);
   }
 
   a {

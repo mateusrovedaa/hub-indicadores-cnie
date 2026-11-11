@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Figma: tag (75:1228), type=status | text.
+ * Tons de status iguais aos do ToneBadge do Aurora (fundo claro, texto escuro da mesma família).
  * Pendente: type=interactive (filtro removível) e type=score.
  */
 const badgeVariants = cva(
@@ -12,12 +13,12 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        neutral: "bg-muted text-foreground border",
+        neutral: "bg-secondary text-secondary-foreground",
         primary: "bg-primary text-primary-foreground",
-        success: "bg-success text-success-foreground",
-        warning: "bg-warning text-warning-foreground",
-        danger: "bg-destructive text-destructive-foreground",
-        info: "bg-info text-info-foreground",
+        success: "bg-success-muted text-(--ds-green-cool-vivid-70)",
+        warning: "bg-warning-muted text-(--ds-yellow-vivid-80)",
+        danger: "bg-destructive-muted text-(--ds-red-vivid-60)",
+        info: "bg-info-muted text-accent-foreground",
       },
     },
     defaultVariants: { variant: "neutral" },

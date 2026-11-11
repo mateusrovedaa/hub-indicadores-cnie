@@ -11,13 +11,19 @@
 
 /*
  * Expõe os tokens ao Tailwind: bg-primary, text-muted-foreground, shadow-md...
- * Os nomes padrão do Tailwind (text-sm, rounded-md, shadow-sm) passam a
- * apontar para a escala GovBR, então componentes shadcn já saem no padrão.
+ * Os nomes padrão do Tailwind (text-sm, rounded-md, shadow-sm) apontam para
+ * as mesmas escalas do Aurora, então uma classe significa o mesmo nos dois.
+ * Exceção: o hub não redefine --spacing-5/6 (ver docs/design-system-mapeamento.md).
  */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-surface-inverse-foreground: var(--surface-inverse-foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -38,47 +44,56 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-success: var(--success);
-  --color-success-subtle: var(--success-subtle);
+  --color-success-muted: var(--success-muted);
   --color-success-foreground: var(--success-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-subtle: var(--destructive-subtle);
+  --color-destructive-muted: var(--destructive-muted);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-warning: var(--warning);
-  --color-warning-subtle: var(--warning-subtle);
+  --color-warning-muted: var(--warning-muted);
   --color-warning-foreground: var(--warning-foreground);
   --color-info: var(--info);
-  --color-info-subtle: var(--info-subtle);
+  --color-info-muted: var(--info-muted);
   --color-info-foreground: var(--info-foreground);
-  --color-footer: var(--footer);
-  --color-footer-foreground: var(--footer-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --color-chart-6: var(--chart-6);
 
   --font-sans: var(--font-family-base);
 
+  /* Tamanho e altura de linha por degrau, como no Aurora */
   --text-xs: var(--font-size-scale-down-01);
+  --text-xs--line-height: var(--font-line-height-medium);
   --text-sm: var(--font-size-scale-base);
+  --text-sm--line-height: var(--font-line-height-medium);
   --text-base: var(--font-size-scale-up-01);
+  --text-base--line-height: var(--font-line-height-medium);
   --text-lg: var(--font-size-scale-up-02);
+  --text-lg--line-height: var(--font-line-height-medium);
   --text-xl: var(--font-size-scale-up-03);
+  --text-xl--line-height: var(--font-line-height-low);
   --text-2xl: var(--font-size-scale-up-04);
+  --text-2xl--line-height: var(--font-line-height-low);
   --text-3xl: var(--font-size-scale-up-05);
+  --text-3xl--line-height: var(--font-line-height-low);
   --text-4xl: var(--font-size-scale-up-06);
+  --text-4xl--line-height: var(--font-line-height-low);
   --text-5xl: var(--font-size-scale-up-07);
+  --text-5xl--line-height: var(--font-line-height-low);
 
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
+  /* Escala de raio do Aurora: sm 4,8px, md 6,4px, lg 8px, xl 11,2px */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
   --radius-full: var(--radius-pill);
 
-  --shadow-sm: var(--surface-shadow-1);
-  --shadow-md: var(--surface-shadow-2);
-  --shadow-lg: var(--surface-shadow-3);
-  --shadow-xl: var(--surface-shadow-4);
+  --shadow-sm: var(--surface-shadow-sm);
+  --shadow-md: var(--surface-shadow-md);
+  --shadow-lg: var(--surface-shadow-lg);
+  --shadow-xl: var(--surface-shadow-xl);
 
   /* Grid do Figma: 4col (320), 8col (768), 12col (1280), TV (1600).
    * O espaçamento padrão do Tailwind (múltiplos de 4px) já coincide com a
